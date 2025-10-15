@@ -4,189 +4,489 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sam Enviro Solutions | SES</title>
+  <link rel="icon" type="image/png" href="https://img.icons8.com/fluency/48/000000/nature-plant-under-sun.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+    html {scroll-behavior: smooth;}
     body {
-      font-family: 'Open Sans', "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Open Sans', Arial, sans-serif;
       margin: 0;
-      background-color: #f5f8f4;
       color: #1b3b1a;
+      background-color: #f5f8f4;
       background-image: url('https://www.transparenttextures.com/patterns/food.png');
       background-repeat: repeat;
-      scroll-behavior: smooth;
+      transition: background .4s;
     }
-
+    .announcement-bar {
+      background: #ffe799;
+      color: #5a450c;
+      padding: 0.5rem 1rem;
+      text-align: center;
+      font-size: 1rem;
+      letter-spacing: 0.03em;
+    }
     header {
       background: linear-gradient(90deg, #3d6b3d, #7ba05b);
       color: white;
       text-align: center;
-      padding: 2rem 1rem;
+      position: relative;
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
-
-    header h1 {
-      margin-bottom: 0.2rem;
+    .hero {
+      margin-top: 40px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
     }
-
-    nav {
+    .hero-text {
+      flex: 1 1 320px;
+      text-align: left;
+      padding: 2rem 1rem 0 1rem;
+      animation: fadeInLeft 1s;
+    }
+    .hero-title {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #fff;
+      letter-spacing: 0.02em;
+    }
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: #e6ffe3;
+      margin-bottom: 1.5rem;
+    }
+    .hero-cta {
+      font-size: 1.1rem;
+      background: #ffe799;
+      color: #1b3b1a;
+      border: none;
+      border-radius: 5px;
+      padding: 0.7rem 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+      box-shadow: 0 4px 12px rgba(61,107,61,.11);
       margin-top: 1rem;
-    }
-
-    nav a {
-      color: white;
-      margin: 0 12px;
       text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s, text-decoration 0.3s;
+      display: inline-block;
     }
-
-    nav a:hover,
-    nav a:focus {
-      color: #d3efd3;
-      text-decoration: underline;
+    .hero-cta:hover {background: #fff15e;}
+    .hero-image {
+      flex: 1 1 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeInRight 1.2s;
+    }
+    .hero-image img {
+      width: 300px;
+      max-width: 100%;
+      border-radius: 12px;
+      border: 5px solid #e8f3e5;
+      box-shadow: 0 8px 30px rgba(46,86,44,0.10);
+    }
+    nav {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      padding: 1.2rem 0 0.2rem 0;
+      display: flex;
+      justify-content: center;
+      background: transparent;
+      z-index: 10;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 14px;
+      padding: 3px 10px;
+      font-size: 1.02rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      border-radius: 3px;
+      transition: background .25s, color .25s;
+    }
+    nav a:hover, nav a:focus {
+      background: #f5f8f4;
+      color: #366c30;
     }
 
     section {
-      padding: 3rem 1rem;
-      max-width: 900px;
-      margin: auto;
+      max-width: 1000px;
+      margin: 64px auto;
+      padding: 32px 18px;
+      background:#ffffffcc;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px #2e562c0e;
       opacity: 0;
       transform: translateY(20px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transition: opacity 0.7s, transform 0.7s;
     }
-
     section.visible {
       opacity: 1;
       transform: translateY(0);
     }
-
-    h1, h2 {
+    h1, h2, h3 {
       color: #2e562c;
+      margin-top: 0;
     }
-
-    .highlight {
-      background-color: #e8f3e5;
-      padding: 1rem;
-      border-radius: 8px;
-      margin: 1rem 0;
-      box-shadow: 0 3px 6px rgba(46, 86, 44, 0.2);
-      transition: box-shadow 0.3s, transform 0.3s;
+    .gallery-row {
       display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .highlight:hover {
-      box-shadow: 0 6px 12px rgba(46, 86, 44, 0.35);
-      transform: translateY(-4px);
-    }
-
-    .highlight img {
-      width: 80px;
-      height: 80px;
-      object-fit: contain;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-
-    ul {
-      padding-left: 1.3rem;
-      line-height: 1.6;
-    }
-
-    footer {
-      text-align: center;
-      background-color: #2f4e2e;
-      color: white;
-      padding: 1rem;
-      font-size: 0.9rem;
-      margin-top: 3rem;
-    }
-
-    /* Responsive Styling */
-    @media (max-width: 600px) {
-      .highlight {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .highlight img {
-        width: 100px;
-        height: auto;
-        margin-bottom: 0.8rem;
-      }
-
-      nav a {
-        display: inline-block;
-        margin: 8px 6px;
-      }
-    }
-
-    /* Contact Form */
-    form {
-      max-width: 500px;
-      margin: auto;
-      background: #e8f3e5;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 3px 6px rgba(46, 86, 44, 0.15);
-    }
-
-    form label {
-      display: block;
-      margin-bottom: 0.4rem;
-      font-weight: 600;
-      color: #2e562c;
-    }
-
-    form input, form textarea {
-      width: 100%;
-      padding: 0.5rem;
-      margin-bottom: 1rem;
-      border: 1px solid #a3c290;
-      border-radius: 5px;
-      font-family: inherit;
-      font-size: 1rem;
-      resize: vertical;
-    }
-
-    form button {
-      background-color: #3d6b3d;
-      color: white;
-      border: none;
-      padding: 0.7rem 1.5rem;
-      font-size: 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    form button:hover {
-      background-color: #7ba05b;
-    }
-
-    /* Social Icons */
-    .social-icons {
-      margin-top: 1rem;
-      font-size: 1.2rem;
-      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      margin-bottom: 22px;
+    }
+    .gallery-card {
+      background: #e8f3e5;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px #2e562c13;
+      flex: 1 1 210px;
+      min-width: 210px;
+      max-width: 260px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 10px;
+      overflow: hidden;
+      transition: box-shadow .3s, transform .2s;
+    }
+    .gallery-card:hover {
+      box-shadow: 0 7px 16px #386d2d1e;
+      transform: translateY(-6px) scale(1.03);
+    }
+    .gallery-card img {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      border-bottom: 2px solid #baeab7;
+    }
+    .gallery-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 11px 0 6px 0;
+    }
+    .gallery-desc {
+      font-size: 0.96rem;
+      padding: 0 0.7rem 1rem 0.7rem;
+      color: #2d4520b6;
     }
 
-    .social-icons a {
+    /* Testimonials */
+    .testimonial-wrap {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .testimonial {
+      background: #e8f3e5;
+      padding: 1.2rem 1.1rem;
+      border-radius: 9px;
+      flex: 1 1 190px;
+      min-width: 230px;
+      max-width: 320px;
+      margin-bottom: 1.1rem;
+      box-shadow: 0 1px 6px #2e562c1b;
+      position: relative;
+      transition: box-shadow 0.25s;
+    }
+    .testimonial:before {
+      content: "“";
+      font-size: 2.4rem;
+      position: absolute;
+      left: 15px;
+      top: -16px;
+      color: #c8deb3;
+    }
+    .testimonial-author {
+      font-size: 1rem;
+      font-weight: 700;
       color: #2e562c;
-      text-decoration: none;
-      transition: color 0.3s;
+      margin-top: 0.7em;
+    }
+    .testimonial-role {
+      font-size: 0.9rem;
+      color: #555;
+      font-style: italic;
     }
 
-    .social-icons a:hover, .social-icons a:focus {
-      color: #7ba05b;
+    /* Blog Preview */
+    .blog-preview {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+    .blog-card {
+      background: #e8f3e5;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px #2e562c13;
+      flex: 1 1 240px;
+      min-width: 240px;
+      max-width: 320px;
+      margin-bottom: 1.2rem;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow .3s, transform .2s;
+    }
+    .blog-card:hover {
+      box-shadow: 0 5px 12px #386d2d1a;
+      transform: translateY(-2px) scale(1.01);
+    }
+    .blog-card img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+    .blog-title {
+      font-weight: bold;
+      font-size: 1.09rem;
+      margin-bottom: 6px;
+      color: #346031;
+    }
+    .blog-snippet {
+      font-size: 0.96rem;
+      color: #2d4520b6;
+    }
+    .blog-link {
+      font-size: 0.98rem;
+      color: #326c41;
+      font-weight: bold;
+      text-decoration: none;
+      margin-top: 9px;
+      display: inline-block;
+    }
+    .blog-link:hover {text-decoration: underline;}
+
+    /* Contact + Floating */
+    .sticky-contact {
+      position: fixed;
+      bottom: 20px; right: 20px;
+      z-index: 99;
+      background: #3d6b3d;
+      color: #fff;
+      padding: 8px 19px;
+      border-radius: 32px;
+      font-size: 1.13rem;
+      box-shadow: 0 4px 18px #3460311c;
+      display: flex; align-items: center; gap: 8px;
+      transition: background .24s, transform .12s;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .sticky-contact:hover {background: #f5f8f4; color:#326c41; transform:scale(1.05);}
+    .contact-social {
+      margin: 1.7rem 0 0.7rem 0;
+      text-align: center;
+    }
+    .contact-social a {
+      color: #2e562c;
+      margin: 0 7px;
+      font-size: 1.3rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-social a:hover {color: #7ba05b;}
+
+    /* Announcement on top bar */
+    .announcement-bar .marquee {
+      display: inline-block;
+      white-space: nowrap;
+      animation: marquee 12s linear infinite;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0);}
+      to { transform: translateX(-50%);}
+    }
+    /* Keyframes for hero entrance */
+    @keyframes fadeInLeft { from {opacity:0;transform:translateX(-25px);} to {opacity:1; transform:none;}}
+    @keyframes fadeInRight { from {opacity:0;transform:translateX(25px);} to {opacity:1; transform:none;}}
+    /* Fade in section animation: handled in JS */
+
+    /* Responsive adjustments */
+    @media (max-width: 850px) {
+      .hero {flex-direction: column;align-items: flex-start;gap:25px;}
+      .hero-image {justify-content: flex-start;}
+    }
+    @media (max-width: 650px) {
+      header {min-height: auto;}
+      .hero-title {font-size:2rem;}
+      .hero-image img {width: 220px;}
+    }
+    @media (max-width: 530px) {
+      .gallery-row, .testimonial-wrap, .blog-preview {flex-direction: column;}
+      nav {font-size:0.98rem;}
     }
   </style>
+</head>
+<body>
+  <div class="announcement-bar">
+    <span class="marquee">🌱 Now offering Moringa & Papaya nutraceuticals! | Seasonal paddy trading & cold-pressed oils available — Contact us today! 🌿</span>
+  </div>
+  <header>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#core">Core Products</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="hero">
+      <div class="hero-text">
+        <div class="hero-title">Sam Enviro Solutions (SES)</div>
+        <div class="hero-subtitle">Rooted in Nature.<br>Refined by Responsibility.</div>
+        <a href="#core" class="hero-cta">Explore Our Core Products</a>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80"
+          alt="Farmland sunrise"/>
+      </div>
+    </div>
+  </header>
 
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Based in Ereipuvari, Nanguneri (Tirunelveli, Tamil Nadu), <strong>Sam Enviro Solutions</strong> is dedicated to promoting sustainable, organic farming methods that enrich both soil and society. We combine tradition and innovation to bring you authentic, eco-friendly products straight from the heart of nature.</p>
+    <ul>
+      <li>Embracing sustainable and circular agricultural practices</li>
+      <li>Women-led entrepreneurship driving rural prosperity</li>
+      <li>Traceable, organic products with community impact</li>
+    </ul>
+  </section>
+
+  <section id="core">
+    <h2>Our Core Products</h2>
+    <div class="gallery-row">
+      <div class="gallery-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Groundnuts_rotated.jpg" alt="Groundnuts for cold-pressed oil" />
+        <div class="gallery-title">🌿 Cold-Pressed Oils</div>
+        <div class="gallery-desc">
+          Purity you can taste — extracted from organically cultivated groundnut, sesame and coconut, with zero chemicals and maximum nutrients.
+        </div>
+      </div>
+      <div class="gallery-card">
+        <img src="https://static.toiimg.com/thumb/msid-78363847,width-400,resizemode-4/78363847.jpg" alt="Paddy Trading" />
+        <div class="gallery-title">🌾 Paddy Trading</div>
+        <div class="gallery-desc">Transparent, fair paddy trading and certified weighbridge operations — boosting farmer livelihoods and rural markets.</div>
+      </div>
+      <div class="gallery-card">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Nutraceuticals" />
+        <div class="gallery-title">💚 Quality Nutraceuticals</div>
+        <div class="gallery-desc">Moringa and papaya leaf powders grown and processed with care, rich in nutrients for food and wellness industries.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <h2>Farm & Product Gallery</h2>
+    <div class="gallery-row">
+      <div class="gallery-card">
+        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Harvest"/>
+        <div class="gallery-title">Harvest Season</div>
+        <div class="gallery-desc">Local farmers at our fields harvesting crops organically, supporting livelihoods and environment.</div>
+      </div>
+      <div class="gallery-card">
+        <img src="https://images.unsplash.com/photo-1524594154908-359684158e12?auto=format&fit=crop&w=400&q=80" alt="Cold Press Machine"/>
+        <div class="gallery-title">Cold-Press In Action</div>
+        <div class="gallery-desc">Our traditional wooden ghani — cold pressing groundnut and sesame for pure, unrefined oil.</div>
+      </div>
+      <div class="gallery-card">
+        <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80" alt="Paddy Weighbridge"/>
+        <div class="gallery-title">Weighbridge Facility</div>
+        <div class="gallery-desc">State-of-the-art weighbridge ensures fully transparent paddy procurement and trading.</div>
+      </div>
+      <div class="gallery-card">
+        <img src="https://images.unsplash.com/photo-1516685018646-5499d0a7ed5b?auto=format&fit=crop&w=400&q=80" alt="Moringa Leaves"/>
+        <div class="gallery-title">Moringa Leaves</div>
+        <div class="gallery-desc">Freshly harvested, shade-dried and powder-processed for premium nutraceuticals.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <h2>What Clients Say</h2>
+    <div class="testimonial-wrap">
+      <div class="testimonial">
+        Best cold-pressed oil I have ever used! The flavor is fresh, and it's truly chemical free.<span class="testimonial-author">– Priya R.</span>
+        <div class="testimonial-role">Homemaker & Health Enthusiast</div>
+      </div>
+      <div class="testimonial">
+        Their paddy weighbridge is very reliable and helped me get fair prices for my crop.<span class="testimonial-author">– S. Muthiah</span>
+        <div class="testimonial-role">Organic Farmer, Tirunelveli</div>
+      </div>
+      <div class="testimonial">
+        The moringa powder quality is exceptional. I trust the process and transparency.<span class="testimonial-author">– Dr. Megha B.</span>
+        <div class="testimonial-role">Nutritionist</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="blog">
+    <h2>From Our Blog</h2>
+    <div class="blog-preview">
+      <div class="blog-card">
+        <img src="https://images.unsplash.com/photo-1457530378978-8bac673b8062?auto=format&fit=crop&w=400&q=80" alt="Blog post 1"/>
+        <div class="blog-title">The Power of Cold-Pressed Oils</div>
+        <div class="blog-snippet">How extraction method matters, and why our process preserves nutrients and purity for your health...</div>
+        <a href="#" class="blog-link">Read More</a>
+      </div>
+      <div class="blog-card">
+        <img src="https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=400&q=80" alt="Blog post 2"/>
+        <div class="blog-title">Moringa: The Miracle Leaf</div>
+        <div class="blog-snippet">Explore the science and tradition behind moringa’s rise as a world-class nutraceutical from Indian farms...</div>
+        <a href="#" class="blog-link">Read More</a>
+      </div>
+      <div class="blog-card">
+        <img src="https://images.unsplash.com/photo-1516641395206-3a2f99115340?auto=format&fit=crop&w=400&q=80" alt="Blog post 3"/>
+        <div class="blog-title">Transparency in Paddy Trading</div>
+        <div class="blog-snippet">See how modern weighbridges empower farmers with fair trade, and what sets SES apart in the local market...</div>
+        <a href="#" class="blog-link">Read More</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p><strong>Address:</strong> Ereipuvari, Nanguneri, Tirunelveli, Tamil Nadu</p>
+    <p><strong>Email:</strong> info@samenviro.in</p>
+    <p><strong>Phone:</strong> +91-XXXXXXXXXX</p>
+    <form id="contactForm">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required placeholder="Your name"/>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required placeholder="your.email@example.com"/>
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="4" required placeholder="Write your message here..."></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <div class="contact-social">
+      <a href="#" aria-label="Facebook" title="Facebook" target="_blank">&#x1F426; Facebook</a>
+      <a href="#" aria-label="Instagram" title="Instagram" target="_blank">&#x1F338; Instagram</a>
+      <a href="#" aria-label="WhatsApp" title="WhatsApp" target="_blank">&#x1F4F2; WhatsApp</a>
+    </div>
+  </section>
+  <a class="sticky-contact" href="mailto:info@samenviro.in" aria-label="Quick Email">
+    📧 Contact Us
+  </a>
+  <footer style="background-color:#2f4e2e;color:white;text-align:center;padding:1.1rem;font-size:0.98rem;margin-top:2.2rem;">
+    © 2025 Sam Enviro Solutions – Cultivating a Greener Tomorrow.
+  </footer>
   <script>
     // Fade in sections on scroll
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
       const sections = document.querySelectorAll('section');
       function checkVisibility() {
         const windowBottom = window.innerHeight + window.scrollY;
@@ -197,107 +497,9 @@
         });
       }
       window.addEventListener('scroll', checkVisibility);
-      checkVisibility();
+      setTimeout(checkVisibility, 100);
     });
-  </script>
-</head>
-<body>
-  <header>
-    <h1>Sam Enviro Solutions (SES)</h1>
-    <p><em>"Rooted in Nature. Refined by Responsibility."</em></p>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#products">Products</a>
-      <a href="#mission">Mission</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <section id="about">
-    <h2>About Us</h2>
-    <p>
-      Based in Ereipuvari, Nanguneri (Tirunelveli, Tamil Nadu), <strong>Sam Enviro Solutions</strong> is dedicated to promoting sustainable, organic farming methods that enrich both soil and society. We combine tradition and innovation to bring you authentic, eco-friendly products straight from the heart of nature.
-    </p>
-  </section>
-
-  <section id="products">
-    <h2>Our Core Product</h2>
-    
-    <div class="highlight">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Groundnuts_rotated.jpg" alt="Groundnuts for cold-pressed oil" />
-      <div>
-        <h3>🌿 Cold-Pressed Oils — Purity You Can Taste</h3>
-        <p>
-          Our cold-pressed oils are produced from organically cultivated seeds, retaining natural nutrients and flavors while avoiding chemical processing. Each drop is a reflection of purity and sustainability.
-        </p>
-        <p>We source groundnuts, sesame seeds, and more for the best quality oil production.</p>
-      </div>
-    </div>
-
-    <div class="highlight">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Sesame_seeds_%281%29.jpg" alt="Sesame seeds" />
-      <div>
-        <h3>Quality Sesame Seeds</h3>
-        <p>Selected sesame seeds from organic farms to maintain authenticity and nutrition in every oil batch.</p>
-      </div>
-    </div>
-
-    <div class="highlight">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Rice_field_tonemapped.jpg" alt="Paddy field" />
-      <div>
-        <h3>🌾 Paddy Trading & Weighbridge Operations</h3>
-        <p>
-          During harvest seasons, SES operates a fully equipped weighbridge facility to support transparent, fair paddy trading. This ensures ethical trade and empowers local farmers through equitable business practices.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section id="mission">
-    <h2>Our Vision & Mission</h2>
-    <p><strong>Vision:</strong> To create an ecosystem where sustainable agriculture and environmental responsibility go hand in hand — nurturing both people and the planet.</p>
-
-    <p><strong>Mission:</strong></p>
-    <ul>
-      <li>Promote chemical-free farming that restores soil health.</li>
-      <li>Produce pure cold-pressed oils that preserve natural nutrition.</li>
-      <li>Empower local farmers through fair, seasonal paddy trading.</li>
-      <li>Build a future where eco-conscious business drives rural prosperity.</li>
-    </ul>
-  </section>
-
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p><strong>Address:</strong> Ereipuvari, Nanguneri, Tirunelveli, Tamil Nadu</p>
-    <p><strong>Email:</strong> info@samenviro.in</p>
-    <p><strong>Phone:</strong> +91-XXXXXXXXXX</p>
-
-    <form id="contactForm">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required placeholder="Your name" />
-      
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required placeholder="your.email@example.com" />
-      
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="4" required placeholder="Write your message here..."></textarea>
-      
-      <button type="submit">Send</button>
-    </form>
-
-    <div class="social-icons" aria-label="Social Media Links">
-      <a href="#" aria-label="Facebook" title="Facebook" target="_blank" rel="noopener">&#x1F426; FB</a>
-      <a href="#" aria-label="Twitter" title="Twitter" target="_blank" rel="noopener">&#x1F426; TW</a>
-      <a href="#" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener">&#x1F426; IN</a>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 Sam Enviro Solutions – Cultivating a Greener Tomorrow.</p>
-  </footer>
-
-  <script>
-    // Optional: Simple contact form alert on submit (no backend integration)
+    // Contact form simple popup
     document.getElementById('contactForm').addEventListener('submit', function(event){
       event.preventDefault();
       alert('Thank you for contacting Sam Enviro Solutions. We will get back to you soon!');
@@ -306,3 +508,4 @@
   </script>
 </body>
 </html>
+
