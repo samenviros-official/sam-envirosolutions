@@ -10,13 +10,34 @@
     html {scroll-behavior: smooth;}
     body {
       font-family: 'Open Sans', Arial, sans-serif;
-      margin: 0;
-      color: #1b3b1a;
-      background-color: #f5f8f4;
-      background-image: url('https://www.transparenttextures.com/patterns/food.png');
-      background-repeat: repeat;
-      transition: background .4s;
-    }
+    margin: 0; color: #1b3b1a;
+    background: linear-gradient(180deg, #f6faee 0%, #e7f7db 70%, #fdfcf7 100%);
+    position: relative;
+    min-height: 100vh;
+  }
+  .background-shape {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 350px;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .background-shape svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  main, section, header, footer, nav {
+    position: relative; z-index: 1;
+  }
+</style>
+<body>
+  <div class="background-shape">
+    <svg viewBox="0 0 1440 350" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0 0h1440v260c-138.5 38-329 67-498 52S684 221 506 221C328 221 138.5 293 0 312V0z" fill="#c9e7be" fill-opacity="0.38"/><path d="M0 320c199.5-56 382.487-61 510-51 127.513 10 368.5 61 510 43s301.5-79 420-127V0H0v320z" fill="#b9dbc2" fill-opacity="0.26"/></svg>
+  </div>
+  <!-- All other content (sections, header) follows -->
+</body>
     .announcement-bar {
       background: #ffe799;
       color: #5a450c;
